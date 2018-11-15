@@ -1,0 +1,97 @@
+source ~/.plugins/z.sh
+
+
+#powerline config
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# ctags path conf
+# let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+
+
+#node-sass conf
+export SASS_BINARY_SITE="https://npm.taobao.org/mirrors/node-sass"
+
+# amuse default: robbyrussell & amuse
+ZSH_THEME="zeta"
+# ZSH_THEME="agnosterzak"
+
+
+plugins=(
+  git
+  history-substring-search
+)
+source $ZSH/oh-my-zsh.sh
+# source ~/.oh-my-zsh/plugins/incr/incr-0.2.zsh
+
+# export LANG=en_US.UTF-8
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+#z&fzf
+unalias z
+j() {
+     if [[ -z "$*" ]]; then
+         cd "$(_z -l 2>&1 | fzf +s | sed 's/^[0-9,.]* *//')"
+     else
+         _last_z_args="$@"
+         _z "$@"
+     fi
+ }
+
+ jj() {
+     cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q $_last_z_args)"
+ }
+
+# aliases
+
+alias vimconf="vi ~/.vimrc"
+alias vimbundle="vi ~/.vimrc.bundles"
+alias zshconf="vi ~/.zshrc"
+alias sc="source ~/.zshrc"
+alias c="clear"
+# shadowsocket-proxychains4
+alias pc="proxychains4 -f ~/repos/workanywhere/proxychains.conf"
+# ss-local config
+alias sslc="ss-local -c ~/repos/workanywhere/ssconf.json"
+alias ssh-server="ssh root@172.105.232.96"
+
+alias showip="ipconfig getifaddr en0"
+
+
+#tldr
+alias m="tldr"
+#fanyi
+alias fj="fanyi"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#subl
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+#vscode
+#alias vscode="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
+#webstorm
+alias ws="/Applications/WebStorm.app/Contents/MacOS/webstorm"
+# Typora
+alias ty="/Applications/Typora.app/Contents/MacOS/Typora"
+
+#python3
+alias py="python3"
+
+#hexoEditor
+alias editor="subl ~/Desktop/hexo/source/_posts"
+
+#musicbox
+alias mus="musicbox"
+
+#git
+alias gc="git clone"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gitp="git push"
+alias glog="git log --pretty=oneline"
+alias gits="git status -sb"
+alias gitrc="git commit --amend -m"
+
+eval $(thefuck --alias)
