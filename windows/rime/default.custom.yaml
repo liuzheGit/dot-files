@@ -1,0 +1,11 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.13.0
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Sat Feb 16 14:27:42 2019"
+  rime_version: 1.4.0
+patch:
+  "menu/page_size": 8
+  schema_list:
+    - {schema: luna_quanpin}
+    - {schema: double_pinyin_flypy}
